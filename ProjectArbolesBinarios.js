@@ -95,7 +95,7 @@ class ListaDoble{
         return array;
     }
 
-    //preOrder es IDR
+    //postOrder es IDR
     postO(Node, array){
         if(!Node) return;   
         this.postO(Node.lhs, array);

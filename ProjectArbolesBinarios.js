@@ -104,18 +104,78 @@ class ListaDoble{
         return array;
     }
 
-    preOrResultado(){
-        
+    postOrResultado(){
+        let contador = 0;
+        let data = this.postO(this.first, []);
 
+
+        for (let i = 0; i <= data.length; i++) {
+            if (data[i] == '/' || data[i] == '*' || data[i] == '+' || data[i] == '-') {
+                if (data[i] == '/') {
+                    contador = (data[i-2]/data[i-1]);
+                    data[i] = contador;
+                    data.splice(i-2,2);
+                    i=0;
+                }else if (data[i] == '*') {
+                    contador = (data[i-2]*data[i-1]);
+                    data[i] = contador;
+                    data.splice(i-2,2);
+                    i=0;
+                }else if (data[i] == '+') {
+                    contador = (data[i-2]+data[i-1]);
+                    data[i] = contador;
+                    data.splice(i-2,2);
+                    i=0;
+                }else if (data[i] == '-') {
+                    contador = (data[i-2]-data[i-1]);
+                    data[i] = contador;
+                    data.splice(i-2,2);
+                    i=0;
+                }
+            }
+            
+        }
+        return data;
     }
 
-    postOrResultado(){
+    preOrResultado(){
+        let contador = 0; // no se si se ocupe
+        let data = this.preO(this.first, []);
 
+
+        for (let i = data.length; i >=0;  i--) {
+            if (data[i] == '/' || data[i] == '*' || data[i] == '+' || data[i] == '-') {
+                if (data[i] == '/') {
+                    contador = (data[i+1]/data[i+2]);
+                    data[i] = contador;
+                    data.splice(i+1,2);
+                    i=data.length;
+                }else if (data[i] == '*') {
+                    contador = (data[i+1]*data[i+2]);
+                    data[i] = contador;
+                    data.splice(i+1,2);
+                    i=data.length;
+                }else if (data[i] == '+') {
+                    contador = (data[i+1]+data[i+2]);
+                    data[i] = contador;
+                    data.splice(i+1,2);
+                    i=data.length;
+                }else if (data[i] == '-') {
+                    contador = (data[i+1]-data[i+2]);
+                    data[i] = contador;
+                    data.splice(i+1,2);
+                    i=data.length;
+                }
+            }
+            
+        }
+        return data;
     }
 }
 
 
-// expresion A EVALUAR = 2  +  7  *  9  /  7 ;
+// expresion A EVALUAR = 2  +  7  *  9  /  7  => DE EJEMPLO  para su revisión:)
+//pd. si quiere intentar con otra EXPRESIÓN solo requiere cambiar los simbolos/numeros de los nodos y cambiara el resultado
 //result pre [ 2, 7, 9, '*', 7, '/', '+' ]
 //result pos [ '+', 2, '/', '*', 7, 9, 7 ]
 // resultado debe dar 11 en pre y pos; 
@@ -142,17 +202,14 @@ ldoble.agregar(nodo);
 nodo=new Node(7);
 ldoble.agregar(nodo);
 
-
+//Muestro la expresión
 console.log(ldoble.listar());
 console.log(ldoble.makeTree());
+//Generar Arbol PRE y POST
 console.log(ldoble.postO(ldoble.first, arrayPos))
 console.log(ldoble.preO(ldoble.first, arrayPre))
 
-
-
-
-
-
-
-
-
+//Resultados de PreOrder;
+console.log(ldoble.preOrResultado());
+//Resultados de PostOrder;
+console.log(ldoble.postOrResultado());

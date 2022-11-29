@@ -108,25 +108,24 @@ class ListaDoble{
         let contador = 0;
         let data = this.postO(this.first, []);
 
-
         for (let i = 0; i <= data.length; i++) {
-            if (data[i] == '/' || data[i] == '*' || data[i] == '+' || data[i] == '-') {
+            if (data[i] === '/' || data[i] === '*' || data[i] === '+' || data[i] === '-') {
                 if (data[i] == '/') {
                     contador = (data[i-2]/data[i-1]);
                     data[i] = contador;
                     data.splice(i-2,2);
                     i=0;
-                }else if (data[i] == '*') {
+                }else if (data[i] === '*') {
                     contador = (data[i-2]*data[i-1]);
                     data[i] = contador;
                     data.splice(i-2,2);
                     i=0;
-                }else if (data[i] == '+') {
+                }else if (data[i] === '+') {
                     contador = (data[i-2]+data[i-1]);
                     data[i] = contador;
                     data.splice(i-2,2);
                     i=0;
-                }else if (data[i] == '-') {
+                }else if (data[i] === '-') {
                     contador = (data[i-2]-data[i-1]);
                     data[i] = contador;
                     data.splice(i-2,2);
@@ -139,28 +138,27 @@ class ListaDoble{
     }
 
     preOrResultado(){
-        let contador = 0; // no se si se ocupe
+        let contador = 0;
         let data = this.preO(this.first, []);
 
-
         for (let i = data.length; i >=0;  i--) {
-            if (data[i] == '/' || data[i] == '*' || data[i] == '+' || data[i] == '-') {
-                if (data[i] == '/') {
+            if (data[i] === '/' || data[i] === '*' || data[i] === '+' || data[i] === '-') {
+                if (data[i] === '/') {
                     contador = (data[i+1]/data[i+2]);
                     data[i] = contador;
                     data.splice(i+1,2);
                     i=data.length;
-                }else if (data[i] == '*') {
+                }else if (data[i] === '*') {
                     contador = (data[i+1]*data[i+2]);
                     data[i] = contador;
                     data.splice(i+1,2);
                     i=data.length;
-                }else if (data[i] == '+') {
+                }else if (data[i] === '+') {
                     contador = (data[i+1]+data[i+2]);
                     data[i] = contador;
                     data.splice(i+1,2);
                     i=data.length;
-                }else if (data[i] == '-') {
+                }else if (data[i] === '-') {
                     contador = (data[i+1]-data[i+2]);
                     data[i] = contador;
                     data.splice(i+1,2);
